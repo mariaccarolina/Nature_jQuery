@@ -24,3 +24,22 @@ $("[data-group]").each(function(){
     })
     console.log($allClick)
 })
+
+
+$('.menu-nav a[href^="#"]').click(function(e){
+	e.preventDefault(); // para prevenir a ação padrao do href para o id;
+	var id = $(this).attr('href'), // selecionando o "href" click
+			menuHeight = $('.menu').innerHeight(),// Pega a ltura do menu
+			targetOffset = $(id).offset().top;// calcula o deslocamento do elemento alvo
+	 // Realiza a animação de scroll suave
+	$('html, body').animate({
+		scrollTop: targetOffset - menuHeight  // Define o deslocamento
+	}, 500);
+});
+
+$('.logo').click(function(e){
+	e.preventDefault();
+	$('html, body').animate({ // Move a página para o topo
+		scrollTop: 0
+	}, 500)
+});
